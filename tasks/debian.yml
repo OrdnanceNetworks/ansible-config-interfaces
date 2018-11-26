@@ -58,7 +58,7 @@
         config_interface['changed']
 
 - name: debian | Restarting Network Bridges
-  shell: bash -c "ifdown {{ item.name }} && ifup {{ item.name }}"
+  shell: bash -c "ifdown {{ item.name }} ; sleep 3 ; ifup {{ item.name }}"
   become: true
   with_items: '{{ network_bridges }}'
   when: >
